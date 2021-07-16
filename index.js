@@ -6,7 +6,6 @@ var FAAppletClient = (function () {
       this.appletId = appletId;
       this.params = {};
       this.eventKey = `fa_applet[${appletId}]`;
-      console.log("🚀 ~ file: lib.js ~ line 9 ~ FAAppletClient ~ this.eventKey ", this.eventKey )
       this.queryCallbacks = {};
   
       const urlParams = new URLSearchParams(window.location.search);
@@ -32,7 +31,6 @@ var FAAppletClient = (function () {
       }
   
       function _parentListener(eventKey, event, queryCallbacks) {
-        console.log("🚀 ~ file: lib.js ~ line 34 ~ _parentListener ~ eventKey", eventKey)
         const { data } = event;
         if (!data) {
           return console.log('Wrong type of event sent');
@@ -68,10 +66,9 @@ var FAAppletClient = (function () {
       }
   
       const _eventHandler = (event) => {
-      console.log("🚀 ~ file: lib.js ~ line 68 ~ FAAppletClient ~ event", event)
-        // if (event.origin && !event.origin.includes('freeagent.network')) {
-        //   return;
-        // }
+        if (event.origin && !event.origin.includes('freeagent.network')) {
+          return;
+        }
 
         const data = event.data;
         if (!data) {

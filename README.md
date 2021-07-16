@@ -50,3 +50,8 @@ Use this library to sync and connect with FreeAgent Applets
 	        },
         }],
 	});
+
+### Events
+     FAClient.on(EVENT_NAME, (eventData) => {
+	     // Do something
+     });
