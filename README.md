@@ -55,3 +55,7 @@ Use this library to sync and connect with FreeAgent Applets
      FAClient.on(EVENT_NAME, (eventData) => {
 	     // Do something
      });
+
+    FAClient.on("locationChange", (data = {}) => {
+      console.log(data.location); // { location: '/entity/view/...' }
+    });

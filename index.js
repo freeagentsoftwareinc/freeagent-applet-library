@@ -10,7 +10,7 @@ var FAAppletClient = (function () {
   
       const urlParams = new URLSearchParams(window.location.search);
       for (const [key, value] of urlParams.entries()) {
-        this.params[key] = value;
+        this.params[key] = JSON.parse(decodeURI(value));
       }
   
       this._postMessageTop = (eventName, payload = {}, callback) => {
