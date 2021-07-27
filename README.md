@@ -59,3 +59,6 @@ Use this library to sync and connect with FreeAgent Applets
     FAClient.on("locationChange", (data = {}) => {
       console.log(data.location); // { location: '/entity/view/...' }
     });
+
+### Handling Params
+For nested params add a `"paramsHandler": "nested"` param to your Applet Configuration.

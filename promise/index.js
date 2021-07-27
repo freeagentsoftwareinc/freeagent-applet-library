@@ -9,8 +9,18 @@ var FAAppletClient = (function () {
     this.queryCallbacks = {};
 
     const urlParams = new URLSearchParams(window.location.search);
+    let paramsHandler = 'default';
     for (const [key, value] of urlParams.entries()) {
-      this.params[key] = JSON.parse(decodeURI(value));
+      if (key === 'paramsHandler' && ['nested', '"nested"'].includes(value)) {
+        paramsHandler = 'nested';
+      }
+    }
+    for (const [key, value] of urlParams.entries()) {
+      if (paramsHandler === 'nested') {
+        this.params[key] = JSON.parse(decodeURI(value));
+      } else {
+        this.params[key] = value;
+      }
     }
     this._postMessageTop = (eventName, payload = {}, callback) => {
       const requestId = btoa(Date.now() * Math.random()).slice(9);
