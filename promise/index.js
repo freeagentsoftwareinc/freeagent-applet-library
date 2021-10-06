@@ -60,6 +60,15 @@ var FAAppletClient = (function () {
         case `${eventKey}.listEntityValues_response`:
           queryCallbacks[data.requestId](data.response);
           break;
+        case `${eventKey}.getEntities_response`:
+          queryCallbacks[data.requestId](data.response);
+          break;
+        case `${eventKey}.getFields_response`:
+          queryCallbacks[data.requestId](data.response);
+          break;
+        case `${eventKey}.getFieldItems_response`:
+          queryCallbacks[data.requestId](data.response);
+          break;
         case `${eventKey}.globalSearch_response`:
           queryCallbacks[data.requestId](data.response);
           break;
@@ -132,6 +141,24 @@ var FAAppletClient = (function () {
   FAAppletClient.prototype.listEntityValues = function (payload, callback) {
     return new Promise((resolve) => {
       this._postMessageTop("listEntityValues", payload, resolve);
+    });
+  };
+
+  FAAppletClient.prototype.getEntities = function (payload, callback) {
+    return new Promise((resolve) => {
+      this._postMessageTop("getEntities", payload, resolve);
+    });
+  };
+
+  FAAppletClient.prototype.getFields = function (payload, callback) {
+    return new Promise((resolve) => {
+      this._postMessageTop("getFields", payload, resolve);
+    });
+  };
+
+  FAAppletClient.prototype.getFieldItems = function (payload, callback) {
+    return new Promise((resolve) => {
+      this._postMessageTop("getFieldItems", payload, resolve);
     });
   };
 
